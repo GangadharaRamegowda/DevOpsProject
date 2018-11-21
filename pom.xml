@@ -20,7 +20,7 @@
       <goal>java</goal>  
      </goals>  
      <configuration>  
-      <mainClass>src/Test</mainClass>  
+      <mainClass>src.Test</mainClass>  
      </configuration>  
     </execution>  
    </executions>  
