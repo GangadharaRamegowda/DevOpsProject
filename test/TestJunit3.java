@@ -12,7 +12,8 @@ public class TestJunit3 extends TestCase  {
       fValue2 = 3.0;
    }
 	
-   @Test
+   // Search for the method name starts with test by surefire plug in. Because implimented the Junit Framework Class call TestCase.
+   //@Test
    public void testAdd() {
       //count the number of test cases
       System.out.println("No of Test Case = "+ this.countTestCases());

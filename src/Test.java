@@ -2,7 +2,7 @@
 public class Test {
 
 public static void main(String args[]) {
-	System.out.println("***********8Shiva Ganesha ***********");
+	System.out.println("***********Shiva Ganesha ***********");
 }	
 	
 }

@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class TestJunit1 {
 
    String message = "Robert";	
-   MessageUtil messageUtil = new MessageUtil(message);
+   private MessageUtil messageUtil = new MessageUtil(message);
    
    @Before 
    public void setUp() {
