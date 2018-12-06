@@ -86,10 +86,10 @@
 							<goal>prepare-agent</goal>
 						</goals>
 						<configuration>
-							<includes>
-								<include>TestJunit2</include>
-								<include>MessageUtil</include>
-							</includes>
+							<excludes>
+								<exclude>TestJunit2</exclude>
+								<exclude>MessageUtil</exclude>
+							</excludes>
 						</configuration>
 					</execution>
 					<!--<execution>
