@@ -29,6 +29,7 @@
 
 	</dependencies>
 	
+	
 	<properties>
     	<skipTests>false</skipTests>
     </properties>
@@ -59,18 +60,29 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
-				<!-- <configuration>
+				<configuration>
 					 	<includes>
-					  		<include>MathTestApplication.java</include> 
+					  		<include>*Test*.java</include>
 						</includes>
-					 </configuration> -->
-					<configuration>
-          				<skipTests>${skipTests}</skipTests>
-        			</configuration>
+						<skipTests>${skipTests}</skipTests>
+					 </configuration>
 			</plugin>
-
-
-			<plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+	  <id>sonar</id>
+	  <properties>
+	    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    	<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPaths>./target/coverage-reports/jacoco-unit.exec</sonar.jacoco.reportPaths>
+		<sonar.language>java</sonar.language>
+	  </properties>
+	  <build>
+	    <plugins>
+	    	<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.5.5.201112152213</version>
@@ -85,12 +97,11 @@
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
-						<configuration>
+					<!--	<configuration>
 							<includes>
-								
-								<include>MessageUtil</include>
+							<include>MessageUtil</include>
 							</includes>
-						</configuration>
+						</configuration>-->
 					</execution>
 					<!--<execution>
 						<id>jacoco:instrument</id>
@@ -114,9 +125,21 @@
 					</execution>
 				</executions>
 			</plugin>
-
-
-		</plugins>
-	</build>
-
+	      <plugin>
+		      <groupId>org.sonarsource.scanner.maven</groupId>
+		      <artifactId>sonar-maven-plugin</artifactId>
+		      <version>3.5.0.1254</version>
+		      <executions>
+		        <execution>
+		          <phase>verify</phase>
+		          <goals>
+		            <goal>sonar</goal>
+		          </goals>
+		        </execution>
+		      </executions>
+		    </plugin>
+	    </plugins>
+	  </build>
+   </profile>
+	</profiles>
 </project>
